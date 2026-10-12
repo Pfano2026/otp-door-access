@@ -1,0 +1,11 @@
+services:
+  - type: web
+    name: otp-door-access
+    runtime: python
+    buildCommand: pip install -r requirements.txt
+    startCommand: gunicorn app:app
+    envVars:
+      - key: SECRET_KEY
+        generateValue: true
+      - key: DEVICE_KEY
+        sync: false        # you enter this value in the Render dashboard
